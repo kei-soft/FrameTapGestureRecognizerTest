@@ -4,7 +4,6 @@ using System.Windows.Input;
 
 namespace FrameTapGestureRecognizerTest
 {
-
     public class MainViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
@@ -17,7 +16,7 @@ namespace FrameTapGestureRecognizerTest
 
         #region Properties
 
-        private bool isBusy = true;
+        private bool isBusy = false;
 
         public bool IsBusy
         {
@@ -63,9 +62,11 @@ namespace FrameTapGestureRecognizerTest
 
         // Command Methods
         #region OnMenuClickCommand
-        private void OnMenuClickCommand()
+        private async void OnMenuClickCommand()
         {
-            Application.Current.MainPage.DisplayAlert("메뉴선택", "TapGestureRecognizer Tapped", "OK");
+            await Application.Current.MainPage.DisplayAlert("frame 선택", "TapGestureRecognizer Tapped", "OK");
+
+            await Task.Run(() => { this.IsBusy = true; Thread.Sleep(2000); this.IsBusy = false; });
         }
         #endregion
 
