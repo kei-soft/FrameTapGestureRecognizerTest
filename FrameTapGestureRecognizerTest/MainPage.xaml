@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FrameTapGestureRecognizerTest.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:FrameTapGestureRecognizerTest">
+    <ContentPage.BindingContext>
+        <viewmodel:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid BackgroundColor="White">
+
+        <Frame
+            Margin="3"
+            Padding="10,0"
+            BackgroundColor="#0D2339"
+            BorderColor="#002E5C"
+            CornerRadius="0"
+            HasShadow="False"
+            HeightRequest="70">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding MenuClickCommand}" />
+            </Frame.GestureRecognizers>
+            <Label
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="TapGestureRecognizer Test"
+                TextColor="White"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
+        </Frame>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" />
+
+    </Grid>
+
+</ContentPage>
